@@ -1,0 +1,30 @@
+<mvc:View controllerName="int.train.odata.ZINT_TRAIN_ODATA.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<List id="mainList" items="{/SalesHeaderSet}" growing="true" mode="SingleSelect">
+							<headerToolbar></headerToolbar>
+							<ObjectListItem title="{Vbeln}">
+								<firstStatus>
+									<ObjectStatus text="{ parts:['Netwr','Waerk'] , type:'sap.ui.model.type.Currency', formatOptions: { maxFractionDigits:1} }"></ObjectStatus>
+								</firstStatus>
+								<ObjectAttribute text="{Ernam}"/>
+								<ObjectAttribute text="{ path : 'Erdat' , type:'sap.ui.model.type.Date' , formatOptions:{style:'long'}}"/>
+							</ObjectListItem>
+						</List>
+					</content>
+					<footer>
+						<Toolbar>
+							<Button text="Delete" press="handleButtonPress"></Button>
+							<ToolbarSpacer/>
+							<Button text="Update" press="handleButtonPress"></Button>
+							<Button text="Create" press="handleButtonPress"></Button>
+						</Toolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

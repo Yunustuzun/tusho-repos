@@ -1,0 +1,29 @@
+<mvc:View controllerName="int.train.field_group.ZINT_TRAIN_FIELD_GROUP.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<VBox>
+							<HBox>
+								<Input fieldGroupIds="address" value=""></Input>
+								<Input fieldGroupIds="address" value=""></Input>
+								<Input fieldGroupIds="address" value=""></Input>
+								<Input fieldGroupIds="address" value=""></Input>
+								<Button text="Adres Doldur" press="fillAddress"></Button>
+							</HBox>
+							<HBox>
+								<Button fieldGroupIds="vendorInfo" text="3"></Button>
+								<Button fieldGroupIds="vendorInfo" text="2"></Button>
+								<Button fieldGroupIds="vendorInfo" text="1"></Button>
+								<Button fieldGroupIds="vendorInfo" text="Test Button"/>
+								<Button text="Satıcı girişe kapat" press="fillVendors"></Button>
+							</HBox>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

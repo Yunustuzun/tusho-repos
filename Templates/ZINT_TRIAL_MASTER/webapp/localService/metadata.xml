@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZINT_TRIAL_REZERVATION_SRV" xml:lang="tr" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false"
+					sap:filterable="false"/><Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false"
+					sap:label="Kullanıcı adı" sap:creatable="false" sap:filterable="false"/><Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false"
+					sap:label="Zaman damgası" sap:creatable="false" sap:filterable="false"/><Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title"
+					sap:filterable="false"/><Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/><Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/><Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/><Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/><Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/><Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/></EntityType>
+			<EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/><Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/><Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/><Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false"
+					sap:label="Zaman damgası"/><Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/><Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/><Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="Vehicle" sap:content-version="1">
+				<Key><PropertyRef Name="Plate"/></Key><Property Name="Plate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Karakter alanı uzunluğu 10"/><Property Name="Rezerved" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/><Property Name="Model" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="c"/><Property Name="VehicleYear" Type="Edm.String" MaxLength="4" sap:unicode="false"
+					sap:label="Ayrt.tanımlanmamış alan, muhtemelen yama dzy.kullanılabilir"/><Property Name="Km" Type="Edm.Int32" sap:unicode="false" sap:label="Sayı"/><NavigationProperty Name="ToRezervation" Relationship="ZINT_TRIAL_REZERVATION_SRV.VehicleToItem" FromRole="FromRole_VehicleToItem"
+					ToRole="ToRole_VehicleToItem"/></EntityType>
+			<EntityType Name="Rezervation" sap:content-version="1">
+				<Key><PropertyRef Name="Plate"/><PropertyRef Name="Datum"/><PropertyRef Name="Uzeit"/></Key><Property Name="Plate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Karakter alanı uzunluğu 10"/><Property Name="Datum" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Tarih"/><Property Name="Uzeit" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Saat"/><Property Name="Name" Type="Edm.String" MaxLength="200" sap:unicode="false" sap:label="Metin(200 krk.)"/><Property Name="StartingKm" Type="Edm.Int32" sap:unicode="false" sap:label="Sayı"/><Property Name="EndingKm" Type="Edm.Int32" sap:unicode="false" sap:label="Sayı"/></EntityType>
+			<Association Name="VehicleToItem" sap:content-version="1"><End Type="ZINT_TRIAL_REZERVATION_SRV.Vehicle" Multiplicity="0..1" Role="FromRole_VehicleToItem"/><End Type="ZINT_TRIAL_REZERVATION_SRV.Rezervation" Multiplicity="*" Role="ToRole_VehicleToItem"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_VehicleToItem"><PropertyRef Name="Plate"/></Principal>
+					<Dependent Role="ToRole_VehicleToItem"><PropertyRef Name="Plate"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZINT_TRIAL_REZERVATION_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="SubscriptionCollection" EntityType="ZINT_TRIAL_REZERVATION_SRV.Subscription" sap:content-version="1"/><EntitySet Name="NotificationCollection" EntityType="ZINT_TRIAL_REZERVATION_SRV.Notification" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="VehicleSet" EntityType="ZINT_TRIAL_REZERVATION_SRV.Vehicle" sap:searchable="true" sap:requires-filter="true"
+				sap:content-version="1"/><EntitySet Name="RezervationSet" EntityType="ZINT_TRIAL_REZERVATION_SRV.Rezervation" sap:searchable="true" sap:requires-filter="true"
+				sap:content-version="1"/>
+				<AssociationSet Name="VehicleToItemSet" Association="ZINT_TRIAL_REZERVATION_SRV.VehicleToItem" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="VehicleSet" Role="FromRole_VehicleToItem"/><End EntitySet="RezervationSet" Role="ToRole_VehicleToItem"/></AssociationSet>
+			</EntityContainer><atom:link rel="self"
+				href="https://webidecp-s0019101377trial.dispatcher.hanatrial.ondemand.com/destinations/AFD/sap/opu/odata/sap/ZINT_TRIAL_REZERVATION_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-s0019101377trial.dispatcher.hanatrial.ondemand.com/destinations/AFD/sap/opu/odata/sap/ZINT_TRIAL_REZERVATION_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

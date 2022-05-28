@@ -1,0 +1,8 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="int.train.router.ZINT_TRAIN_ROUTER.controller.Master" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Title">
+		<List id="orders" items="{/orders}" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+			<StandardListItem title="{orderName}"></StandardListItem>
+		</List>
+	</Page>
+</mvc:View>

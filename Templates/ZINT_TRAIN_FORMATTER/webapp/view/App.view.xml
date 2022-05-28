@@ -1,0 +1,29 @@
+<mvc:View controllerName="int.train.formatter.ZINT_TRAIN_FORMATTER.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<List
+							items="{ path: 'companyModel>/company' , 
+									 sorter: { path: 'name' , descending: true} ,
+									 filters: [ {path: 'averageSale' , operator: 'BT' , value1: '1150' , value2:'1250'} ] }">
+							<items>
+								<ObjectListItem title="{companyModel>name}" icon="sap-icon://product" number="3" numberState="Warning">
+									<firstStatus>
+										<ObjectStatus text="{companyModel>averageSale}"
+											state="{parts:['companyModel>averageSale','companyModel>sector/name'] ,formatter: '.formatAverageSale' }"></ObjectStatus>
+									</firstStatus>
+									<ObjectAttribute
+										text="{= ${companyModel>sector/name} === 'Food' &amp;&amp; ${companyModel>name} === 'Şenpiliç' ? 'Yiyecek' : ${companyModel>sector/name}}"/>
+									<ObjectAttribute></ObjectAttribute>
+								</ObjectListItem>
+							</items>
+						</List>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

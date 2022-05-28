@@ -1,0 +1,12 @@
+<mvc:View controllerName="int.ui5.template.controller.Home" xmlns="sap.m" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+
+	<VBox>
+		<Label text="{ilkModelim>/uygulamaMetni}"></Label>
+		<Button text="{i18n>changeLabelButton}" press="changeLabel1"></Button>
+		<Button text="Change Label Name 2" press="changeLabel2"></Button>
+		<Input value="{ilkModelim>/uygulamaMetni}" width="400px"></Input>
+	</VBox>
+
+
+</mvc:View>

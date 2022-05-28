@@ -1,0 +1,4 @@
+<mvc:View controllerName="int.train.router.ZINT_TRAIN_ROUTER.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+		<SplitApp id="appControl">
+		</SplitApp>
+</mvc:View>

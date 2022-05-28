@@ -1,0 +1,21 @@
+<mvc:View controllerName="int.train.types.ZINT_TRAIN_TYPES.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<VBox>
+							<Text text="{firstModel>/demoDate}"></Text>
+							<Text text="{firstModel>/demoTime}"></Text>
+							<Text text="{firstModel>/demoNumberx}"></Text>
+							<Text text="{firstModel>/demoNumbery}"></Text>
+							<Text text="{firstModel>/demoNumberz}"></Text>
+							<Button text="Show Popup" press="showPopup"></Button>	
+						</VBox>
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

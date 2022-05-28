@@ -1,0 +1,27 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="int.train.first.ZINT_TRAIN_FIRST.controller.App" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<VBox>
+							<IconTabBar id="idIconTabBar" select=".onFilterSelect" class="sapUiResponsiveContentPadding">
+								<items>
+									<IconTabFilter showAll="true" count="1" text="Products" key="All"/>
+									<IconTabSeparator/>
+									<IconTabFilter icon="sap-icon://begin" iconColor="Positive" count="3" text="Ok" key="Ok"/>
+									<IconTabFilter icon="sap-icon://compare" iconColor="Critical" count="3" text="Heavy" key="Heavy"/>
+									<IconTabFilter icon="sap-icon://inventory" iconColor="Negative" count="4" text="Overweight" key="Overweight"/>
+								</items>
+							</IconTabBar>
+							<Text text="İlk Uygulama"/>
+							<Button text="Popup" press="showPopup" type="Accept"/>
+							<Button text="Negative" press="showPopup" type="Negative"/>
+							<Button text="Critic" press="showPopup" type="Critical"/>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

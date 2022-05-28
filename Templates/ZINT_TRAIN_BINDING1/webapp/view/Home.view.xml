@@ -1,0 +1,37 @@
+<mvc:View controllerName="int.train.binding1.ZINT_TRAIN_BINDING1.controller.Home" displayBlock="true" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:fe="sap.f" xmlns:card="sap.f.cards">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<List  footerText="Footer text" items="{listModel>/customers}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<Title text="Orders" level="H2"/>
+									<ToolbarSpacer/>
+									<Button text="Delete" press="handleButtonPress"/>
+									<Button text="Create" press="handleButtonPress"/>
+									<Button text="Update" press="handleButtonPress"/>
+								</OverflowToolbar>
+							</headerToolbar>
+							<items>
+								<StandardListItem icon="sap-icon://product" title="{listModel>name}" description="{listModel>country}"></StandardListItem>
+							</items>
+						</List>
+						<fe:Card class="sapUiMediumMargin" width="300px">
+							<fe:header>
+								<card:Header title="Buy bus ticket on-line" subtitle="Buy a single-ride ticket for a date" iconSrc="sap-icon://bus-public-transport"/>
+							</fe:header>
+							<fe:content>
+								<VBox height="110px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+									<Text text="Kart içeriği"></Text>
+								</VBox>
+							</fe:content>
+						</fe:Card>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

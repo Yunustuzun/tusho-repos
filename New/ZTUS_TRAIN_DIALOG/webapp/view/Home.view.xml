@@ -1,0 +1,155 @@
+<mvc:View controllerName="int.ui5.template.controller.Home" xmlns="sap.m" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:mc="sap.suite.ui.microchart">
+
+	<!-- 
+	<VBox>
+		<IconTabBar id="idIconTabBar" select=".onFilterSelect" class="sapUiResponsiveContentPadding">
+			<items>
+				<IconTabFilter showAll="true" count="1" text="Products" key="All" />
+				<IconTabSeparator />
+				<IconTabFilter icon="sap-icon://accelerated" iconColor="Positive" count="3" text="Ok" key="Ok" />
+				<IconTabFilter icon="sap-icon://compare" iconColor="Critical" count="3" text="Heavy" key="Heavy" />
+				<IconTabFilter icon="sap-icon://inventory" iconColor="Negative" count="4" text="Overweight" key="Overweight" />
+				<IconTabFilter icon="sap-icon://inventory" iconColor="Neutral" count="4" text="Overweight" key="Overweight" />
+			</items>
+		</IconTabBar>
+		<Text text="İlk Uygulama" class="greenColor"/>
+		<Button id="popupButton" text="Popup x" press="showPopup" type="Accept" />
+		<Button text="deneme" press="showPopup" type="Success" />
+		<Button text="Negative" press="showPopup" type="Negative" />
+		<Button text="Critic" press="showPopup" type="Critical" />
+		<Button text="Dialog aç" press="onShowDialog"></Button>
+	</VBox>
+	<mc:AreaMicroChart size="Auto" minXValue="0" maxXValue="100" minYValue="0" maxYValue="100" class="sapUiSmallMargin" press="press">
+		<mc:firstXLabel>
+			<mc:AreaMicroChartLabel label="June 1" color="Good" />
+		</mc:firstXLabel>
+		<mc:lastXLabel>
+			<mc:AreaMicroChartLabel label="June 30" color="Critical" />
+		</mc:lastXLabel>
+		<mc:firstYLabel>
+			<mc:AreaMicroChartLabel label="0M" color="Good" />
+		</mc:firstYLabel>
+		<mc:lastYLabel>
+			<mc:AreaMicroChartLabel label="80M" color="Critical" />
+		</mc:lastYLabel>
+		<mc:chart>
+			<mc:AreaMicroChartItem>
+				<mc:points>
+					<mc:AreaMicroChartPoint x="0" y="0" />
+					<mc:AreaMicroChartPoint x="30" y="20" />
+					<mc:AreaMicroChartPoint x="60" y="20" />
+					<mc:AreaMicroChartPoint x="100" y="80" />
+				</mc:points>
+			</mc:AreaMicroChartItem>
+		</mc:chart>
+		<mc:target>
+			<mc:AreaMicroChartItem>
+				<mc:points>
+					<mc:AreaMicroChartPoint x="0" y="0" />
+					<mc:AreaMicroChartPoint x="30" y="30" />
+					<mc:AreaMicroChartPoint x="60" y="40" />
+					<mc:AreaMicroChartPoint x="100" y="90" />
+				</mc:points>
+			</mc:AreaMicroChartItem>
+		</mc:target>
+		<mc:maxThreshold>
+			<mc:AreaMicroChartItem color="Good">
+				<mc:points>
+					<mc:AreaMicroChartPoint x="0" y="0" />
+					<mc:AreaMicroChartPoint x="30" y="40" />
+					<mc:AreaMicroChartPoint x="60" y="50" />
+					<mc:AreaMicroChartPoint x="100" y="100" />
+				</mc:points>
+			</mc:AreaMicroChartItem>
+		</mc:maxThreshold>
+		<mc:minThreshold>
+			<mc:AreaMicroChartItem color="Error">
+				<mc:points>
+					<mc:AreaMicroChartPoint x="0" y="0" />
+					<mc:AreaMicroChartPoint x="30" y="20" />
+					<mc:AreaMicroChartPoint x="60" y="30" />
+					<mc:AreaMicroChartPoint x="100" y="70" />
+				</mc:points>
+			</mc:AreaMicroChartItem>
+		</mc:minThreshold>
+	</mc:AreaMicroChart>
+
+
+	<HBox class="sapUiLargeMarginBegin">
+		<VBox>
+			<Input fieldGroupIds="address" value=""></Input>
+			<Input fieldGroupIds="address" value=""></Input>
+			<Input fieldGroupIds="address" value=""></Input>
+			<Input fieldGroupIds="address" value=""></Input>
+			<Button text="Adres Doldur" press="fillAddress"></Button>
+		</VBox>
+		<VBox>
+			<Button fieldGroupIds="vendorInfo" text="3"></Button>
+			<Button fieldGroupIds="vendorInfo" text="2"></Button>
+			<Button fieldGroupIds="vendorInfo" text="1"></Button>
+			<Button fieldGroupIds="vendorInfo" text="Test Button" />
+			<Button text="Satıcı girişe kapat" press="fillVendors"></Button>
+		</VBox>
+	</HBox> -->
+
+	<!-- <List items="{listModel>/customers}" backgroundDesign="Translucent" footerText="test">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Orders" level="H2"/>
+				<ToolbarSpacer/>
+				<Button text="Delete" press="handleButtonPress"/>
+				<Button text="Create" press="handleButtonPress"/>
+				<Button text="Update" press="handleButtonPress"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<items>
+			<ObjectListItem icon="sap-icon://product" title="{listModel>name}" intro="{listModel>country}" ></ObjectListItem>
+		</items>
+	</List> -->
+
+	<List items="{ 
+			path: 'companyModel>/company' , 
+			sorter: { path: 'name' , descending: true} 
+			
+			}">
+		<items>
+			<ObjectListItem title="{companyModel>name}" icon="sap-icon://product" 
+				number="{ path:'companyModel>averageSale', type: 'sap.ui.model.type.Currency' }" numberState="Error">
+				<firstStatus>
+					<ObjectStatus  state="{
+						
+							parts:[
+							'companyModel>averageSale/0',
+							'companyModel>sector/name'
+							] ,
+						
+							formatter: '.formatAverageSale' 
+						
+						}"></ObjectStatus>
+				</firstStatus>
+				<ObjectAttribute text="{=
+
+					${companyModel>averageSale} * 1000 > 120000
+					? 'Custom' 
+					: ${companyModel>sector/name}
+
+					}" />
+				<ObjectAttribute></ObjectAttribute>
+			</ObjectListItem>
+		</items>
+	</List>
+
+	<VBox class="sapUiSmallMarginBegin">
+		<Text text="{firstModel>/demoDate}"></Text>
+		<Text text="{
+			path : 'firstModel>/today' , type: 'sap.ui.model.type.Time', formatOptions: { style: 'long' }
+			
+		}"></Text>
+		<Text text="{i18n>testKey}"></Text>
+		<Text text="{firstModel>/demoTime}"></Text>
+		<Text text="{firstModel>/demoNumberx}"></Text>
+		<Text text="{firstModel>/demoNumbery}"></Text>
+		<Text text="{firstModel>/demoNumberz}"></Text>
+		<Button text="Show Popup" press="showPopup"></Button>
+	</VBox>
+</mvc:View>

@@ -1,0 +1,21 @@
+<mvc:View controllerName="int.ui5.template.controller.Home" xmlns="sap.m" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+
+	<VBox>
+		<IconTabBar id="idIconTabBar" select=".onFilterSelect" class="sapUiResponsiveContentPadding">
+			<items>
+				<IconTabFilter showAll="true" count="1" text="Products" key="All" />
+				<IconTabSeparator />
+				<IconTabFilter icon="sap-icon://begin" iconColor="Positive" count="3" text="Ok" key="Ok" />
+				<IconTabFilter icon="sap-icon://compare" iconColor="Critical" count="3" text="Heavy" key="Heavy" />
+				<IconTabFilter icon="sap-icon://inventory" iconColor="Negative" count="4" text="Overweight" key="Overweight" />
+			</items>
+		</IconTabBar>
+		<Text text="İlk Uygulama" />
+		<Button text="Popup x" press="showPopup" type="Accept" />
+		<Button text="Negative" press="showPopup" type="Negative" />
+		<Button text="Critic" press="showPopup" type="Critical" />
+	</VBox>
+
+
+</mvc:View>

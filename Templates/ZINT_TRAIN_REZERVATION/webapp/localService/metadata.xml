@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZINT_TRAIN_REZERVATION_SRV" xml:lang="tr" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Vehicle" sap:content-version="1">
+				<Key><PropertyRef Name="Plate"/></Key><Property Name="Plate" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Karakter alanı uzunluğu 10"/><Property Name="Rezerved" Type="Edm.String" MaxLength="1" sap:label="Karakter 1"/><Property Name="Model" Type="Edm.String" MaxLength="50" sap:label="c"/><Property Name="VehicleYear" Type="Edm.String" MaxLength="4" sap:label="Ayrt.tanımlanmamış alan, muhtemelen yama dzy.kullanılabilir"/><Property Name="Km" Type="Edm.Int32" sap:label="Sayı"/><NavigationProperty Name="ToRezervation" Relationship="ZINT_TRAIN_REZERVATION_SRV.VehicleToRezervation"
+					FromRole="FromRole_VehicleToRezervation" ToRole="ToRole_VehicleToRezervation"/></EntityType>
+			<EntityType Name="Rezervation" sap:content-version="1">
+				<Key><PropertyRef Name="Guid"/></Key><Property Name="Guid" Type="Edm.String" Nullable="false" MaxLength="36" sap:label="36 karakterli metin"/><Property Name="Plate" Type="Edm.String" MaxLength="10" sap:label="Karakter alanı uzunluğu 10"/><Property Name="Datum" Type="Edm.DateTime" Precision="7" sap:label="Tarih"/><Property Name="Uzeit" Type="Edm.Time" Precision="0" sap:label="Saat"/><Property Name="Name" Type="Edm.String" MaxLength="200" sap:label="Metin(200 krk.)"/><Property Name="StartingKm" Type="Edm.Int32" sap:label="Sayı"/><Property Name="EndingKm" Type="Edm.Int32" sap:label="Sayı"/></EntityType>
+			<Association Name="VehicleToRezervation" sap:content-version="1"><End Type="ZINT_TRAIN_REZERVATION_SRV.Vehicle" Multiplicity="1" Role="FromRole_VehicleToRezervation"/><End Type="ZINT_TRAIN_REZERVATION_SRV.Rezervation" Multiplicity="*" Role="ToRole_VehicleToRezervation"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_VehicleToRezervation"><PropertyRef Name="Plate"/></Principal>
+					<Dependent Role="ToRole_VehicleToRezervation"><PropertyRef Name="Plate"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZINT_TRAIN_REZERVATION_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="VehicleSet" EntityType="ZINT_TRAIN_REZERVATION_SRV.Vehicle" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="RezervationSet" EntityType="ZINT_TRAIN_REZERVATION_SRV.Rezervation" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="VehicleToRezervationSet" Association="ZINT_TRAIN_REZERVATION_SRV.VehicleToRezervation" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="VehicleSet" Role="FromRole_VehicleToRezervation"/><End EntitySet="RezervationSet" Role="ToRole_VehicleToRezervation"/></AssociationSet>
+			</EntityContainer><atom:link rel="self"
+				href="https://webidecp-s0019101377trial.dispatcher.hanatrial.ondemand.com/destinations/AFD/sap/opu/odata/sap/ZINT_TRAIN_REZERVATION_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-s0019101377trial.dispatcher.hanatrial.ondemand.com/destinations/AFD/sap/opu/odata/sap/ZINT_TRAIN_REZERVATION_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
