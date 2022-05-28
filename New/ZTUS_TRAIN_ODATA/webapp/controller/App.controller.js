@@ -43,7 +43,7 @@ sap.ui.define([
 
 			defaultModel.create("/MaterialSet", {
 				Matnr: "00111111",
-				Maktx: "test 1",
+				Maktx: "test 11",
 				Mtart: "ZM01"
 			}, {
 				success: function (response, data) {
