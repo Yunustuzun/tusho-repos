@@ -1,0 +1,7 @@
+<mvc:View controllerName="int.training.rezervation.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.f">
+	<Shell id="shell">
+		<App id="app">
+			<f:FlexibleColumnLayout autoFocus="false" id="fcl" stateChange="onStateChanged" restoreFocusOnBackNavigation="true" layout="{/layout}" backgroundDesign="Translucent" />
+		</App>
+	</Shell>
+</mvc:View>

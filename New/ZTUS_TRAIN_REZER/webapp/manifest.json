@@ -1,0 +1,124 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "int.training.rezervation",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "sourceTemplate": {
+      "id": "servicecatalog.connectivityComponentForManifest",
+      "version": "0.0.0"
+    },
+    "dataSources": {
+      "Materials": {
+        "uri": "/sap/opu/odata/sap/ZTUS_TRIAL_MATERIALS_SRV/",
+        "type": "OData",
+        "settings": {
+          "localUri": "localService/metadata.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "rootView": {
+      "viewName": "int.training.rezervation.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    },
+    "dependencies": {
+      "minUI5Version": "1.65.6",
+      "libs": {
+        "sap.ui.layout": {},
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "int.training.rezervation.i18n.i18n"
+        }
+      },
+      "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "OneWay",
+          "defaultCountMode": "Request",
+          "useBatch": false
+        },
+        "dataSource": "Materials",
+        "preload": true
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "int.training.rezervation.view",
+        "controlId": "fcl"
+      },
+      "routes": [
+        {
+          "pattern": ":layout:",
+          "name": "master",
+          "target": ["master"]
+        },
+        {
+          "pattern": "detail/{product}/{layout}",
+          "name": "detail",
+          "target": ["master", "detail"]
+        }
+      ],
+      "targets": {
+        "master": {
+          "viewName": "Master",
+          "controlAggregation": "beginColumnPages"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "controlAggregation": "midColumnPages"
+        }
+      }
+    }
+  },
+  "sap.platform.abap": {
+    "uri": "/sap/bc/ui5_ui5/sap/zint_train_odat/webapp",
+    "_version": "1.1.0"
+  }
+}

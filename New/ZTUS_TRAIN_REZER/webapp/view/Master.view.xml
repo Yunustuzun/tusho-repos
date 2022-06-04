@@ -1,0 +1,52 @@
+<mvc:View controllerName="" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true" height="100%" busyIndicatorDelay="0" xmlns:f="sap.f">
+    <f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Vehicles ?" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- DynamicPage Content -->
+        <f:content>
+            <Table id="tableVehicle" items="{
+     path: 'products>/ProductCollection',
+     sorter: {
+         path: 'Name'
+     }
+ }" class="sapFDynamicPageAlignContent" width="auto">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <SearchField search="onSearch" width="17.5rem" />
+                        <OverflowToolbarButton icon="sap-icon://add" type="Transparent" press="onAdd" />
+                        <OverflowToolbarButton icon="sap-icon://sort" type="Transparent" press="onSort" />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="12em">
+                        <Text text="Product" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="Price" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" press="onListItemPress">
+                        <cells>
+                            <ObjectIdentifier title="{products>Name}" text="{products>ProductId}" />
+                            <ObjectNumber number="{
+                     parts:[{path:'products>Price'},{path:'products>CurrencyCode'}],
+                     type: 'sap.ui.model.type.Currency',
+                     formatOptions: {showMeasure: false}
+                 }" unit="{products>CurrencyCode}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>

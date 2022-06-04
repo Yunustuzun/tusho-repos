@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/test/Opa5"],function(t){"use strict";return t.extend("int.train.odata.ZINT_TRAIN_ODATA.test.integration.arrangements.Startup",{iStartMyApp:function(t){var a=t||{};a.delay=a.delay||50;this.iStartMyUIComponent({componentConfig:{name:"int.train.odata.ZINT_TRAIN_ODATA",async:true},hash:a.hash,autoWait:a.autoWait})}})});

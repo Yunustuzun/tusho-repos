@@ -9,7 +9,7 @@ sap.ui.define([
 	FilterOperator) {
 	"use strict";
 
-	return Controller.extend("int.train.odata.ZINT_TRAIN_ODATA.controller.App", {
+	return Controller.extend("int.training.rezervation.controller.App", {
 		onInit: function () {
 
 		},

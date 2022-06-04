@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"int/train/odata/ZINT_TRAIN_ODATA/model/models",
+	"int.training.rezervation/model/models",
 	"sap/m/MessageBox",
 	"sap/ui/model/json/JSONModel"
 ], function (UIComponent,
@@ -11,7 +11,7 @@ sap.ui.define([
 	JSONModel) {
 	"use strict";
 
-	return UIComponent.extend("int.train.odata.ZINT_TRAIN_ODATA.Component", {
+	return UIComponent.extend("int.training.rezervation.Component", {
 
 		metadata: {
 			manifest: "json"
@@ -44,8 +44,25 @@ sap.ui.define([
 			this.setModel(applicationModel, "application");
 
 
+			// var defaultModel = this.getOwnerComponent().getModel();
 
-	
+			// defaultModel.read('/MaterialSet', {
+			// 	filters: filters,
+			// 	urlParameters: {
+			// 		"$expand": ["MaterialPlants"]
+			// 	},
+			// 	success: function (response, data) {
+
+			// 		var applicationModel = this.getOwnerComponent().getModel("application");
+			// 		applicationModel.setProperty("/list", response.results);
+
+			// 	}.bind((this)),
+			// 	error: this.errorHandler
+
+			// })
+
+
+
 		},
 
 		errorHandler: function (response) {
